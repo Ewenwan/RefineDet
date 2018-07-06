@@ -1,4 +1,19 @@
 # Single-Shot Refinement Neural Network for Object Detection
+    RefineDet是CVPR2018的论文，个人觉得是一篇很不错的文章，
+    大致上是SSD算法和RPN网络、FPN算法的结合，
+    可以在保持SSD高效的前提下提高检测效果（实验效果提升挺明显）。
+    第一眼看到这篇文章就让我想起了RON，
+    毕竟都是想做one stage和two stage的object detection算法结合。
+    RefineDet的主要思想：
+        一方面引入two stage类型的object detection算法中对box的由粗到细的回归思想
+             （由粗到细回归其实就是先通过RPN网络得到粗粒度的box信息，
+              然后再通过常规的回归支路进行进一步回归从而得到更加精确的框信息，
+              这也是two stage类型的object detection算法效果优于one stage类型的一个重要原因）。
+        另一方面引入类似FPN网络的特征融合操作用于检测网络，
+              可以有效提高对小目标的检测效果，检测网络的框架还是SSD。
+
+Figure1是RefineDet网络的结构图（直观的特点就是two-step cascaded regression），主要包含三个部分：anchor refinement module (ARM) 、object detection module (ODM)、transfer connection block (TCB)。
+
 
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 
